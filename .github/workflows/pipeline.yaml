@@ -33,6 +33,8 @@ jobs:
       - name: Run tests with pytest
         run: |
           python -m pytest
+        env:
+          ENVIRONMENT: test
 
   package:
     name: "package"
@@ -88,6 +90,8 @@ jobs:
         uses: azure/webapps-deploy@v2
         id: deploy-to-webapp
         with:
-          app-name: "colbert-loan"
+          app-name: "flask-tests"
           slot-name: "Production"
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_D4F4CFE8F5B543078E119DADBACE2AAD }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_E4A71BE1C9894E5C840B74AA44F135B1 }}
+        env:
+          ENVIRONMENT: production
